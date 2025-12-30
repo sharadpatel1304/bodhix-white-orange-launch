@@ -1,39 +1,40 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import buddhaIcon from "@/assets/buddha-icon.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
-    { name: "Contact", href: "#contact" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/about" },
+    { name: "Team", href: "/team" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={buddhaIcon} alt="Buddha" className="w-8 h-8" />
-            <span className="text-xl font-semibold tracking-tight text-foreground">
+            <span className="text-xl font-normal tracking-tight text-foreground">
               BodhiX
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                to={link.href}
+                className="text-sm font-normal text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -51,14 +52,14 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden border-t border-border py-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-3 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                className="block py-3 text-sm font-normal text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         )}
