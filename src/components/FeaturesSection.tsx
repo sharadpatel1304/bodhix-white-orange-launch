@@ -1,26 +1,26 @@
 import { motion } from "framer-motion";
-import { Lightbulb, Zap, Shield, TrendingUp } from "lucide-react";
+import { Atom, Brain, Fingerprint, Infinity } from "lucide-react";
 
 const features = [
   {
-    icon: Lightbulb,
-    title: "Innovation First",
-    description: "We push boundaries with cutting-edge solutions that redefine what's possible.",
+    icon: Brain,
+    title: "Cognitive Systems",
+    description: "AI that doesn't just process—it understands. Neural architectures that learn from every interaction.",
   },
   {
-    icon: Zap,
-    title: "Lightning Fast",
-    description: "Optimized performance that scales seamlessly with your growing business needs.",
+    icon: Atom,
+    title: "Atomic Precision",
+    description: "Micro-optimizations that cascade into macro performance. Every millisecond is sacred.",
   },
   {
-    icon: Shield,
-    title: "Enterprise Security",
-    description: "Bank-grade security protocols protecting your data and your customers.",
+    icon: Fingerprint,
+    title: "Zero-Trust Security",
+    description: "Paranoid by design. We assume breach and architect accordingly.",
   },
   {
-    icon: TrendingUp,
-    title: "Proven Results",
-    description: "Track record of delivering measurable impact for businesses worldwide.",
+    icon: Infinity,
+    title: "Infinite Scalability",
+    description: "From prototype to planet-scale. Your growth is our constraint, not your infrastructure.",
   },
 ];
 
@@ -42,10 +42,10 @@ const FeaturesSection = () => {
           className="mb-16"
         >
           <p className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-4">
-            Why Choose Us
+            The Philosophy
           </p>
           <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground">
-            Built for the future
+            Systems that breathe
           </h2>
         </motion.div>
 

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Enterprise Clients" },
-  { value: "99.9%", label: "Uptime Guarantee" },
-  { value: "24/7", label: "Support Available" },
+  { value: "∞", label: "Possibilities Explored" },
+  { value: "0", label: "Compromises Made" },
+  { value: "10⁹", label: "Data Points Processed" },
+  { value: "1", label: "Obsession: Craft" },
 ];
 
 const StatsSection = () => {
