@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import ParticleVortex from "./ParticleVortex";
+import buddhaIcon from "@/assets/buddha-icon.png";
 
 const Hero = () => {
   const scrollToContent = () => {
@@ -19,6 +20,29 @@ const Hero = () => {
       {/* Particle Vortex - positioned to the right */}
       <div className="absolute right-0 top-0 w-1/2 h-full">
         <ParticleVortex />
+        
+        {/* Translucent Buddha Overlay with breathing effect */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <motion.img 
+            src={buddhaIcon}
+            alt=""
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain opacity-15 mix-blend-overlay"
+            animate={{ 
+              scale: [1, 1.05, 1],
+              opacity: [0.15, 0.2, 0.15],
+            }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
       </div>
       
       {/* Content - Left side */}
@@ -31,7 +55,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-6"
           >
-            Tech Solutions
+            Digital Alchemy
           </motion.p>
           
           {/* Main headline */}
@@ -44,14 +68,14 @@ const Hero = () => {
             BodhiX
           </motion.h1>
           
-          {/* Subtext */}
+          {/* Subtext - More unique */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-base text-muted-foreground leading-relaxed max-w-md"
           >
-            We craft bold strategies that transform businesses. Precision thinking meets decisive action.
+            Where code meets consciousness. We transmute complexity into clarity, building systems that think, adapt, and evolve.
           </motion.p>
           
           {/* CTA Link */}
@@ -61,10 +85,10 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Link 
-              to="/services" 
+              to="/projects" 
               className="inline-flex items-center gap-2 mt-8 text-sm text-foreground hover:text-primary transition-colors group"
             >
-              Explore our work
+              View our transmutations
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

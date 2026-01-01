@@ -1,15 +1,15 @@
 import Navbar from "@/components/Navbar";
-import Team from "@/components/Team";
+import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 
-const TeamPage = () => {
+const ProjectsPage = () => {
   return (
     <PageTransition>
       <main>
         <Navbar />
         <div className="pt-16">
-          <Team />
+          <Projects />
         </div>
         <Footer />
       </main>
@@ -17,4 +17,4 @@ const TeamPage = () => {
   );
 };
 
-export default TeamPage;
+export default ProjectsPage;

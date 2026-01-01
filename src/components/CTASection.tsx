@@ -20,20 +20,20 @@ const CTASection = () => {
           className="max-w-2xl"
         >
           <p className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-4">
-            Let's Build Together
+            Begin The Journey
           </p>
           <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-foreground leading-tight mb-6">
-            Ready to transform your business?
+            Ready to transcend the ordinary?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Partner with us to create technology solutions that drive real results. 
-            From concept to launch, we're with you every step of the way.
+            Every great system starts with a conversation. Tell us what keeps you up at night, 
+            and we'll show you what's possible when constraints become catalysts.
           </p>
           <Link 
             to="/contact" 
             className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group text-lg"
           >
-            Get in touch
+            Start the dialogue
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
