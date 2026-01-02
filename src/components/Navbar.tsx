@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "next-themes";
-import buddhaIcon from "@/assets/buddha-icon.png";
+import bxLogo from "@/assets/bx-logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +20,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src={buddhaIcon} alt="Buddha" className="w-8 h-8" />
-            <span className="text-xl font-normal tracking-tight text-foreground">
-              BodhiX
-            </span>
+          <Link to="/" className="flex items-center">
+            <img src={bxLogo} alt="BodhiX" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

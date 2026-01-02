@@ -4,51 +4,62 @@ import * as THREE from "three";
 
 const Particles = () => {
   const pointsRef = useRef<THREE.Points>(null);
-  const particleCount = 1500;
+  const particleCount = 2000;
 
-  const { positions, velocities } = useMemo(() => {
+  const { positions, velocities, radii } = useMemo(() => {
     const positions = new Float32Array(particleCount * 3);
     const velocities = new Float32Array(particleCount);
+    const radii = new Float32Array(particleCount);
 
     for (let i = 0; i < particleCount; i++) {
       const theta = Math.random() * Math.PI * 2;
-      const radius = Math.random() * 3 + 0.5;
-      const y = (Math.random() - 0.5) * 6;
+      // Create a tighter orbit around center (the buddha)
+      const radius = Math.random() * 2.5 + 1.8;
+      const y = (Math.random() - 0.5) * 4;
 
       positions[i * 3] = Math.cos(theta) * radius;
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = Math.sin(theta) * radius;
 
-      velocities[i] = Math.random() * 0.015 + 0.005;
+      velocities[i] = Math.random() * 0.02 + 0.008;
+      radii[i] = radius;
     }
 
-    return { positions, velocities };
+    return { positions, velocities, radii };
   }, []);
 
   useFrame((state) => {
     if (!pointsRef.current) return;
 
     const positionArray = pointsRef.current.geometry.attributes.position.array as Float32Array;
+    const time = state.clock.elapsedTime;
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
       const x = positionArray[i3];
       const z = positionArray[i3 + 2];
 
-      const angle = Math.atan2(z, x) + velocities[i];
-      const radius = Math.sqrt(x * x + z * z);
+      // Orbital motion around center
+      const currentAngle = Math.atan2(z, x);
+      const newAngle = currentAngle + velocities[i];
+      
+      // Slightly oscillating radius for dynamic effect
+      const baseRadius = radii[i];
+      const oscillation = Math.sin(time * 0.5 + i * 0.1) * 0.2;
+      const currentRadius = baseRadius + oscillation;
 
-      positionArray[i3] = Math.cos(angle) * radius;
-      positionArray[i3 + 2] = Math.sin(angle) * radius;
-      positionArray[i3 + 1] += velocities[i] * 0.2;
+      positionArray[i3] = Math.cos(newAngle) * currentRadius;
+      positionArray[i3 + 2] = Math.sin(newAngle) * currentRadius;
+      
+      // Gentle vertical drift
+      positionArray[i3 + 1] += velocities[i] * 0.15;
 
-      if (positionArray[i3 + 1] > 3) {
-        positionArray[i3 + 1] = -3;
+      if (positionArray[i3 + 1] > 2) {
+        positionArray[i3 + 1] = -2;
       }
     }
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
-    pointsRef.current.rotation.y = state.clock.elapsedTime * 0.05;
   });
 
   return (
