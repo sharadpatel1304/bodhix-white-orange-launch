@@ -21,7 +21,8 @@ const Particles = () => {
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = Math.sin(theta) * radius;
 
-      velocities[i] = Math.random() * 0.02 + 0.008;
+      // Slower velocities
+      velocities[i] = Math.random() * 0.008 + 0.003;
       radii[i] = radius;
     }
 
@@ -74,7 +75,7 @@ const Particles = () => {
         size={0.02}
         color="#C26637"
         transparent
-        opacity={0.7}
+        opacity={0.45}
         sizeAttenuation
       />
     </points>
