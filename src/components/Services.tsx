@@ -32,11 +32,6 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 lg:py-32 bg-background relative">
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
-      }} />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
