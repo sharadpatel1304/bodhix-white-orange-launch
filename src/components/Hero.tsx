@@ -19,14 +19,17 @@ const Hero = () => {
       
       {/* Particle Vortex - positioned to the right */}
       <div className="absolute right-0 top-0 w-1/2 h-full">
-        <ParticleVortex />
+        {/* Vortex behind the buddha */}
+        <div className="absolute inset-0 z-0">
+          <ParticleVortex />
+        </div>
         
-        {/* Laughing Buddha Overlay - constant with transparency */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* Laughing Buddha - brought to front */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
           <img 
             src={laughingBuddha}
             alt=""
-            className="w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-20"
+            className="w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-90 drop-shadow-2xl"
           />
         </div>
       </div>
