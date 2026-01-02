@@ -24,12 +24,28 @@ const Hero = () => {
           <ParticleVortex />
         </div>
         
-        {/* Laughing Buddha - brought to front */}
+        {/* Laughing Buddha - brought to front with glowing aura */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
+          {/* Pulsing glow effect */}
+          <motion.div
+            animate={{
+              boxShadow: [
+                "0 0 60px 30px rgba(194, 102, 55, 0.3)",
+                "0 0 100px 50px rgba(194, 102, 55, 0.5)",
+                "0 0 60px 30px rgba(194, 102, 55, 0.3)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-full"
+          />
           <img 
             src={laughingBuddha}
             alt=""
-            className="w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-90 drop-shadow-2xl"
+            className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-95 drop-shadow-2xl"
           />
         </div>
       </div>
