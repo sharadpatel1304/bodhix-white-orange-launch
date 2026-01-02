@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import ParticleVortex from "./ParticleVortex";
-import buddhaIcon from "@/assets/buddha-icon.png";
+import laughingBuddha from "@/assets/laughing-buddha.png";
 
 const Hero = () => {
   const scrollToContent = () => {
@@ -21,28 +21,14 @@ const Hero = () => {
       <div className="absolute right-0 top-0 w-1/2 h-full">
         <ParticleVortex />
         
-        {/* Translucent Buddha Overlay with breathing effect */}
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <motion.img 
-            src={buddhaIcon}
+        {/* Laughing Buddha Overlay - constant with transparency */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img 
+            src={laughingBuddha}
             alt=""
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain opacity-15 mix-blend-overlay"
-            animate={{ 
-              scale: [1, 1.05, 1],
-              opacity: [0.15, 0.2, 0.15],
-            }}
-            transition={{ 
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            className="w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-20"
           />
-        </motion.div>
+        </div>
       </div>
       
       {/* Content - Left side */}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Atom, Brain, Fingerprint, Infinity } from "lucide-react";
+import { Atom, Brain, Fingerprint, Infinity, Zap, Globe } from "lucide-react";
 
 const features = [
   {
@@ -21,6 +21,16 @@ const features = [
     icon: Infinity,
     title: "Infinite Scalability",
     description: "From prototype to planet-scale. Your growth is our constraint, not your infrastructure.",
+  },
+  {
+    icon: Zap,
+    title: "Real-Time Processing",
+    description: "Sub-millisecond response times. Because in the digital realm, speed is survival.",
+  },
+  {
+    icon: Globe,
+    title: "Global Distribution",
+    description: "Edge computing at its finest. Your data, everywhere, instantly.",
   },
 ];
 
@@ -49,7 +59,7 @@ const FeaturesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -59,7 +69,7 @@ const FeaturesSection = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group"
             >
-              <div className="p-6 border border-border hover:border-primary/30 transition-colors">
+              <div className="p-6 border border-border hover:border-primary/30 transition-colors h-full">
                 <feature.icon className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
                 <h3 className="text-lg font-medium text-foreground mb-2">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
