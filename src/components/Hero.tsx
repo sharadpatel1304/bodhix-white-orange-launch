@@ -1,24 +1,41 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ParticleVortex from "./ParticleVortex";
 import laughingBuddha from "@/assets/laughing-buddha.png";
 
 const Hero = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const buddhaY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   const scrollToContent = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
 
   return (
-    <section className="min-h-screen flex items-center bg-background relative overflow-hidden pt-16">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
-      }} />
+    <section ref={ref} className="min-h-screen flex items-center bg-background relative overflow-hidden pt-16">
+      {/* Grid Pattern Background with parallax */}
+      <motion.div 
+        style={{ y: backgroundY }}
+        className="absolute inset-0 opacity-[0.03]" 
+      >
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
+      </motion.div>
       
       {/* Particle Vortex - positioned to the right */}
-      <div className="absolute right-0 top-0 w-1/2 h-full">
+      <motion.div style={{ y: buddhaY, opacity }} className="absolute right-0 top-0 w-1/2 h-full">
         {/* Vortex behind the buddha */}
         <div className="absolute inset-0 z-0">
           <ParticleVortex />
@@ -57,10 +74,10 @@ const Hero = () => {
             className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-95 drop-shadow-2xl"
           />
         </div>
-      </div>
+      </motion.div>
       
-      {/* Content - Left side */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+      {/* Content - Left side with parallax */}
+      <motion.div style={{ y: contentY, opacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
         <div className="max-w-xl">
           {/* Small caps label */}
           <motion.p 
@@ -107,7 +124,7 @@ const Hero = () => {
             </Link>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div 
