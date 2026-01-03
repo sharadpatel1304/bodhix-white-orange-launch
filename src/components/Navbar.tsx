@@ -9,6 +9,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },

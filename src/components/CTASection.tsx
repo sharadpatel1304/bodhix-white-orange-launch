@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <section className="py-40 bg-background relative overflow-hidden">
+    <section className="py-48 bg-background relative overflow-hidden">
       {/* Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
         backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
@@ -14,20 +14,19 @@ const CTASection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
           >
             <p className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-4">
-              Begin The Journey
+              Get Started
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight mb-6">
-              Ready to transcend the ordinary?
+              Let's build something together
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Every great system starts with a conversation. Tell us what keeps you up at night, 
-              and we'll show you what's possible when constraints become catalysts.
+              Have an idea? We'd love to hear it. Let's talk about how we can help.
             </p>
             <Link 
               to="/contact" 
@@ -39,33 +38,33 @@ const CTASection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
             <div className="border border-border p-8 lg:p-12">
               <Sparkles className="w-12 h-12 text-primary mb-6" strokeWidth={1} />
               <h3 className="text-2xl font-normal text-foreground mb-4">
-                The BodhiX Difference
+                Why BodhiX
               </h3>
               <ul className="space-y-4 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <span className="text-primary">→</span>
-                  <span>No templates. Every solution is crafted from first principles.</span>
+                  <span>Custom solutions, not one-size-fits-all</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary">→</span>
-                  <span>We don't just build—we obsess over every interaction.</span>
+                  <span>Clear communication, no jargon</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary">→</span>
-                  <span>Your success metrics become our north star.</span>
+                  <span>On-time delivery, every time</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary">→</span>
-                  <span>Post-launch partnership, not abandonment.</span>
+                  <span>Support that lasts beyond launch</span>
                 </li>
               </ul>
             </div>

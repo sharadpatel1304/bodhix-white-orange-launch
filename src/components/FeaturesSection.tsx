@@ -4,39 +4,39 @@ import { Atom, Brain, Fingerprint, Infinity, Zap, Globe } from "lucide-react";
 const features = [
   {
     icon: Brain,
-    title: "Cognitive Systems",
-    description: "AI that doesn't just process—it understands. Neural architectures that learn from every interaction.",
+    title: "Smart Solutions",
+    description: "Software that adapts and learns. Built to grow with your business.",
   },
   {
     icon: Atom,
-    title: "Atomic Precision",
-    description: "Micro-optimizations that cascade into macro performance. Every millisecond is sacred.",
+    title: "Clean Code",
+    description: "Well-crafted, maintainable systems. Easy to understand, easy to extend.",
   },
   {
     icon: Fingerprint,
-    title: "Zero-Trust Security",
-    description: "Paranoid by design. We assume breach and architect accordingly.",
+    title: "Secure by Default",
+    description: "Your data stays protected. Security built in from day one.",
   },
   {
     icon: Infinity,
-    title: "Infinite Scalability",
-    description: "From prototype to planet-scale. Your growth is our constraint, not your infrastructure.",
+    title: "Scales with You",
+    description: "Start small, grow big. Our systems handle it all.",
   },
   {
     icon: Zap,
-    title: "Real-Time Processing",
-    description: "Sub-millisecond response times. Because in the digital realm, speed is survival.",
+    title: "Fast Performance",
+    description: "Quick load times, instant responses. No waiting around.",
   },
   {
     icon: Globe,
-    title: "Global Distribution",
-    description: "Edge computing at its finest. Your data, everywhere, instantly.",
+    title: "Works Everywhere",
+    description: "Access your tools from anywhere. Desktop, mobile, global.",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section className="py-32 bg-background relative">
+    <section className="py-40 bg-background relative">
       {/* Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
         backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
@@ -45,17 +45,17 @@ const FeaturesSection = () => {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.7 }}
+          className="mb-20"
         >
           <p className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-4">
-            The Philosophy
+            What We Offer
           </p>
           <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground">
-            Systems that breathe
+            Built for results
           </h2>
         </motion.div>
 
