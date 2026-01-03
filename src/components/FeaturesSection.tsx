@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Atom, Brain, Fingerprint, Infinity, Zap, Globe } from "lucide-react";
 
 const features = [
@@ -35,15 +36,29 @@ const features = [
 ];
 
 const FeaturesSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["50px", "-50px"]);
+
   return (
-    <section className="py-40 bg-background relative">
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
-      }} />
+    <section ref={ref} className="py-48 bg-background relative overflow-hidden">
+      {/* Grid Pattern with parallax */}
+      <motion.div 
+        style={{ y: backgroundY }}
+        className="absolute inset-0 opacity-[0.02]" 
+      >
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
+      </motion.div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <motion.div style={{ y: contentY }} className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +92,7 @@ const FeaturesSection = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
