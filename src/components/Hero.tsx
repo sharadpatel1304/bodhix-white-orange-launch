@@ -24,7 +24,7 @@ const Hero = () => {
           <ParticleVortex />
         </div>
         
-        {/* Laughing Buddha - brought to front with glowing aura */}
+        {/* Laughing Buddha - brought to front with glowing aura and floating animation */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           {/* Pulsing glow effect */}
           <motion.div
@@ -42,9 +42,18 @@ const Hero = () => {
             }}
             className="absolute w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-full"
           />
-          <img 
+          {/* Floating buddha image */}
+          <motion.img 
             src={laughingBuddha}
             alt=""
+            animate={{
+              y: [0, -15, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-95 drop-shadow-2xl"
           />
         </div>
@@ -73,14 +82,14 @@ const Hero = () => {
             BodhiX
           </motion.h1>
           
-          {/* Subtext - More unique */}
+          {/* Subtext - Simple and straightforward */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-base text-muted-foreground leading-relaxed max-w-md"
           >
-            Where code meets consciousness. We transmute complexity into clarity, building systems that think, adapt, and evolve.
+            We build software that works. Simple tools, powerful results.
           </motion.p>
           
           {/* CTA Link */}
