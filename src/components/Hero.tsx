@@ -94,9 +94,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground leading-[1.1]"
+            className="text-5xl md:text-6xl lg:text-7xl font-normal italic tracking-tight text-navy leading-[1.1]"
           >
-            BodhiX
+            B<span className="text-primary">o</span>dhiX
           </motion.h1>
           
           {/* Subtext - Simple and straightforward */}

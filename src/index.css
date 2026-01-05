@@ -33,6 +33,9 @@
     --accent: 18 56% 49%;
     --accent-foreground: 0 0% 100%;
 
+    /* Navy blue for headings */
+    --navy: 220 50% 20%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
@@ -75,6 +78,9 @@
 
     --accent: 18 56% 55%;
     --accent-foreground: 0 0% 100%;
+
+    /* Navy blue for headings - lighter in dark mode */
+    --navy: 220 40% 70%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 95%;
