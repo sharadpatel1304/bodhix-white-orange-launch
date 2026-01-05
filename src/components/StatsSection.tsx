@@ -10,8 +10,10 @@ const StatsSection = () => {
     offset: ["start end", "end start"]
   });
   
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["40px", "-40px"]);
+  // Smooth parallax - visible but subtle
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["25px", "-25px"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.3]);
 
   return (
     <section ref={ref} className="py-48 bg-secondary/30 relative overflow-hidden">
@@ -26,7 +28,7 @@ const StatsSection = () => {
         }} />
       </motion.div>
       
-      <motion.div style={{ y: contentY }} className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

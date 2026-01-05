@@ -12,10 +12,12 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
   
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const buddhaY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Subtle parallax with smooth transitions
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const buddhaY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   const scrollToContent = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
@@ -77,7 +79,7 @@ const Hero = () => {
       </motion.div>
       
       {/* Content - Left side with parallax */}
-      <motion.div style={{ y: contentY, opacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+      <motion.div style={{ y: contentY, opacity, scale: contentScale }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
         <div className="max-w-xl">
           {/* Small caps label */}
           <motion.p 
