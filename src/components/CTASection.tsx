@@ -10,9 +10,11 @@ const CTASection = () => {
     offset: ["start end", "end start"]
   });
   
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const leftContentY = useTransform(scrollYProgress, [0, 1], ["60px", "-30px"]);
-  const rightContentY = useTransform(scrollYProgress, [0, 1], ["80px", "-20px"]);
+  // Smooth parallax with staggered effect
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const leftContentY = useTransform(scrollYProgress, [0, 1], ["40px", "-20px"]);
+  const rightContentY = useTransform(scrollYProgress, [0, 1], ["60px", "-15px"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.3]);
 
   return (
     <section ref={ref} className="py-56 bg-background relative overflow-hidden">
@@ -30,7 +32,7 @@ const CTASection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            style={{ y: leftContentY }}
+            style={{ y: leftContentY, opacity: contentOpacity }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -55,7 +57,7 @@ const CTASection = () => {
           </motion.div>
 
           <motion.div
-            style={{ y: rightContentY }}
+            style={{ y: rightContentY, opacity: contentOpacity }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
