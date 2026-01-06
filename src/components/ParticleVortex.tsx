@@ -21,8 +21,8 @@ const Particles = () => {
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = Math.sin(theta) * radius;
 
-      // Slower velocities
-      velocities[i] = Math.random() * 0.008 + 0.003;
+      // Much slower velocities
+      velocities[i] = Math.random() * 0.002 + 0.001;
       radii[i] = radius;
     }
 

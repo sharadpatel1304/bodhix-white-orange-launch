@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import LiveChart from "./LiveChart";
-import LiveMetrics from "./LiveMetrics";
 
 const StatsSection = () => {
   const ref = useRef<HTMLElement>(null);
@@ -46,12 +45,8 @@ const StatsSection = () => {
             Real-time data from our systems. Always running, always reliable.
           </p>
         </motion.div>
-
-        <LiveMetrics />
         
-        <div className="mt-12">
-          <LiveChart />
-        </div>
+        <LiveChart />
       </motion.div>
     </section>
   );
