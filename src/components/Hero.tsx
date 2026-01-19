@@ -1,86 +1,17 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import ParticleVortex from "./ParticleVortex";
-import laughingBuddha from "@/assets/laughing-buddha.png";
+import { motion } from "framer-motion";
 
 const Hero = () => {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-  
-  // Subtle parallax with smooth transitions
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
-  const buddhaY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-  const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
   const scrollToContent = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center bg-background relative overflow-hidden pt-16">
-      {/* Grid Pattern Background with parallax */}
-      <motion.div 
-        style={{ y: backgroundY }}
-        className="absolute inset-0 opacity-[0.03]" 
-      >
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </motion.div>
-      
-      {/* Particle Vortex - positioned to the right */}
-      <motion.div style={{ y: buddhaY, opacity }} className="absolute right-0 top-0 w-1/2 h-full">
-        {/* Vortex behind the buddha */}
-        <div className="absolute inset-0 z-0">
-          <ParticleVortex />
-        </div>
-        
-        {/* Laughing Buddha - brought to front with glowing aura and floating animation */}
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          {/* Pulsing glow effect */}
-          <motion.div
-            animate={{
-              boxShadow: [
-                "0 0 60px 30px rgba(194, 102, 55, 0.3)",
-                "0 0 100px 50px rgba(194, 102, 55, 0.5)",
-                "0 0 60px 30px rgba(194, 102, 55, 0.3)",
-              ],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-full"
-          />
-          {/* Floating buddha image */}
-          <motion.img 
-            src={laughingBuddha}
-            alt=""
-            animate={{
-              y: [0, -15, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain opacity-95 drop-shadow-2xl"
-          />
-        </div>
-      </motion.div>
-      
-      {/* Content - Left side with parallax */}
-      <motion.div style={{ y: contentY, opacity, scale: contentScale }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
-        <div className="max-w-xl">
+    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-16">
+      {/* Content - Centered */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full text-center">
+        <div className="max-w-3xl mx-auto">
           {/* Small caps label */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -96,7 +27,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-normal italic tracking-tight text-navy leading-[1.1]"
+            className="text-6xl md:text-7xl lg:text-8xl font-normal italic tracking-tight text-navy leading-[1.1]"
           >
             B<span className="text-primary">o</span>dhiX
           </motion.h1>
@@ -106,7 +37,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-base text-muted-foreground leading-relaxed max-w-md"
+            className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto"
           >
             We build software that works. Simple tools, powerful results.
           </motion.p>
@@ -119,14 +50,14 @@ const Hero = () => {
           >
             <Link 
               to="/projects" 
-              className="inline-flex items-center gap-2 mt-8 text-sm text-foreground hover:text-primary transition-colors group"
+              className="inline-flex items-center gap-2 mt-10 text-sm text-foreground hover:text-primary transition-colors group"
             >
               View our transmutations
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div 
