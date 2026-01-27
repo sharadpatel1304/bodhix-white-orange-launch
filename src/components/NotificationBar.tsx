@@ -9,19 +9,19 @@ const NotificationBar = () => {
     "✦ Where Code Meets Creativity",
   ];
 
-  // Duplicate messages for seamless loop
-  const duplicatedMessages = [...messages, ...messages];
+  // Duplicate for seamless loop
+  const duplicatedMessages = [...messages, ...messages, ...messages];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-primary overflow-hidden py-2">
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-background border-b border-border overflow-hidden py-2.5">
       <motion.div
         className="flex whitespace-nowrap"
         animate={{
-          x: [0, -50 * messages.length + "%"],
+          x: ["0%", "-33.33%"],
         }}
         transition={{
           x: {
-            duration: 20,
+            duration: 25,
             repeat: Infinity,
             ease: "linear",
           },
@@ -30,7 +30,7 @@ const NotificationBar = () => {
         {duplicatedMessages.map((message, index) => (
           <span
             key={index}
-            className="text-primary-foreground text-sm font-medium mx-8 inline-block"
+            className="text-primary text-xs font-medium tracking-wide mx-12 inline-block uppercase"
           >
             {message}
           </span>
