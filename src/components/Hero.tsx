@@ -21,7 +21,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % phrases.length);
-    }, 2500);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
@@ -70,11 +70,17 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground leading-[1.1] mb-4"
+          className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-foreground leading-[1.2] mb-4"
         >
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">we</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">build</motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">We</motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">make</motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">custom</motion.span>
           <motion.span variants={wordVariants} className="inline-block">software</motion.span>
+          <br />
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">built</motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">around</motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">your</motion.span>
+          <motion.span variants={wordVariants} className="inline-block">business</motion.span>
         </motion.h1>
 
         {/* Scrolling phrase - movie credit style */}
