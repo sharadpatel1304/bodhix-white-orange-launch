@@ -26,7 +26,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col bg-white relative overflow-hidden pt-16">
+    <section className="min-h-screen flex flex-col bg-background relative overflow-hidden pt-24">
       {/* Top Section - Logo Name */}
       <div className="flex-1 flex items-start pt-12 lg:pt-20 px-6 lg:px-12 max-w-7xl mx-auto w-full">
         <motion.div
