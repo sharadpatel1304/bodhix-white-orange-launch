@@ -8,7 +8,7 @@ const ServicesPage = () => {
     <PageTransition>
       <main>
         <Navbar />
-        <div className="pt-16">
+        <div className="pt-20">
           <Services />
         </div>
         <Footer />
