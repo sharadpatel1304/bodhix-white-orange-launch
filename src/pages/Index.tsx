@@ -1,3 +1,4 @@
+import NotificationBar from "@/components/NotificationBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -10,6 +11,7 @@ const Index = () => {
   return (
     <PageTransition>
       <main>
+        <NotificationBar />
         <Navbar />
         <Hero />
         <FeaturesSection />
