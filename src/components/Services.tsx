@@ -6,93 +6,98 @@ const Services = () => {
   const services = [
     {
       icon: Code2,
-      title: "Platform Development",
-      description: "Custom SaaS platforms built for scale, security, and seamless user experience. From MVP to enterprise-grade solutions.",
-      features: ["Custom Architecture", "Scalable Infrastructure", "API Development"],
+      title: "Custom Software",
+      description: "Built around your business. Not the other way around.",
+      details: "We design and develop software that fits your exact workflow. No templates. No compromises.",
     },
     {
       icon: Workflow,
       title: "System Integration",
-      description: "Connect your existing tools and workflows into a unified, efficient ecosystem. Eliminate silos and boost productivity.",
-      features: ["API Integration", "Workflow Automation", "Legacy Modernization"],
+      description: "Connect your tools. Automate the boring stuff.",
+      details: "Your existing software should work together seamlessly. We make that happen.",
     },
     {
       icon: BarChart3,
-      title: "Data Analytics",
-      description: "Transform raw data into actionable insights that drive strategic decisions. Real-time dashboards and predictive analytics.",
-      features: ["Business Intelligence", "Predictive Models", "Custom Dashboards"],
+      title: "Data & Analytics",
+      description: "Turn data into decisions.",
+      details: "Real-time dashboards. Clear insights. No spreadsheet chaos.",
     },
     {
       icon: Cloud,
       title: "Cloud Infrastructure",
-      description: "Modern cloud architecture designed for reliability, performance, and cost efficiency. AWS, GCP, and Azure expertise.",
-      features: ["Cloud Migration", "DevOps", "Cost Optimization"],
+      description: "Reliable. Scalable. Cost-effective.",
+      details: "Modern cloud architecture that grows with your business.",
     },
   ];
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-background relative">
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <section id="services" className="bg-background relative">
+      {/* Hero Section */}
+      <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 border-b border-border">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="text-center max-w-3xl"
         >
-          <p className="text-primary text-xs font-medium tracking-[0.2em] uppercase mb-4">
-            What We Do
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground">
+          <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase mb-8">
             Services
-          </h2>
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+            What we do
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Four things. Done well.
+          </p>
         </motion.div>
-        
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+      </div>
+
+      {/* Services Grid */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
+        <div className="grid md:grid-cols-2 gap-px bg-border">
           {services.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group border border-border p-8 lg:p-10 hover:border-primary/30 transition-colors"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-background p-8 lg:p-12 group"
             >
-              <div className="flex items-start gap-4 mb-6">
-                <service.icon className="w-8 h-8 text-primary flex-shrink-0" strokeWidth={1.5} />
-                <div>
-                  <span className="text-primary text-sm font-medium mr-3">{String(index + 1).padStart(2, "0")}</span>
-                  <h3 className="text-xl font-medium text-foreground inline">{service.title}</h3>
-                </div>
-              </div>
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <service.icon 
+                className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" 
+                strokeWidth={1.5} 
+              />
+              <h3 className="text-xl md:text-2xl font-light text-foreground mb-3">
+                {service.title}
+              </h3>
+              <p className="text-primary font-medium text-sm mb-4">
                 {service.description}
               </p>
-              <div className="flex flex-wrap gap-3">
-                {service.features.map((feature) => (
-                  <span key={feature} className="text-xs text-muted-foreground border border-border px-3 py-1">
-                    {feature}
-                  </span>
-                ))}
-              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                {service.details}
+              </p>
             </motion.div>
           ))}
         </div>
-        
+
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16"
+          transition={{ duration: 0.6 }}
+          className="mt-16 text-center"
         >
+          <p className="text-muted-foreground mb-6">
+            Have a project in mind?
+          </p>
           <Link 
             to="/contact" 
-            className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+            className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group text-lg"
           >
-            Discuss your project
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            Let's talk
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
       </div>

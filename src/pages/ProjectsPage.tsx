@@ -8,7 +8,7 @@ const ProjectsPage = () => {
     <PageTransition>
       <main>
         <Navbar />
-        <div className="pt-16">
+        <div className="pt-20">
           <Projects />
         </div>
         <Footer />
