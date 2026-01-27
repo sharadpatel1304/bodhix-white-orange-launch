@@ -1,11 +1,29 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
   const scrollToContent = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
+
+  // Rotating phrases for movie credit effect
+  const phrases = [
+    "simplicity",
+    "clarity", 
+    "focus",
+    "impact"
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % phrases.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   // Word animation variants
   const containerVariants = {
@@ -13,19 +31,19 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.1,
         delayChildren: 0.3
       }
     }
   };
 
   const wordVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut" as const
       }
     }
@@ -34,7 +52,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-background relative overflow-hidden px-6">
       {/* Main Content - Centered */}
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,36 +70,41 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground leading-[1.1] mb-8"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground leading-[1.1] mb-4"
         >
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">Transforming</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">Ideas</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">into</motion.span>
-          <br className="hidden md:block" />
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">Elegant</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">Digital</motion.span>
-          <motion.span variants={wordVariants} className="inline-block">Solutions:</motion.span>
-          <br />
-          <motion.span 
-            variants={wordVariants} 
-            className="inline-block text-primary"
-          >
-            Simplicity & Impact
-          </motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">we</motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">build</motion.span>
+          <motion.span variants={wordVariants} className="inline-block">software</motion.span>
         </motion.h1>
+
+        {/* Scrolling phrase - movie credit style */}
+        <div className="h-16 md:h-20 lg:h-24 overflow-hidden relative">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={currentIndex}
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -60, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-primary"
+            >
+              {phrases[currentIndex]}
+            </motion.p>
+          </AnimatePresence>
+        </div>
 
         {/* CTA Link */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.5 }}
-          className="mt-12"
+          className="mt-16"
         >
           <Link 
             to="/projects" 
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
           >
-            View our work
+            see our work
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
