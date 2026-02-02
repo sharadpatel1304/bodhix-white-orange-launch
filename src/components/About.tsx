@@ -17,57 +17,65 @@ const About = () => {
 
   return (
     <section id="about" className="bg-background relative">
-      {/* Compact Hero with Buddha */}
-      <div className="py-16 lg:py-20 px-6 relative overflow-hidden">
+      {/* Hero with Buddha */}
+      <div className="py-12 lg:py-16 px-6 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          {/* Buddha positioned to the right */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none hidden lg:block">
-            <Suspense fallback={null}>
-              <div className="w-64 h-64">
-                <ParticleVortex />
-              </div>
-            </Suspense>
-            <motion.img
-              src={laughingBuddha}
-              alt="Laughing Buddha"
-              className="w-48 h-48 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
+          <div className="grid lg:grid-cols-3 gap-8 items-center">
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-2"
+            >
+              <h1 className="text-3xl md:text-4xl font-light text-foreground mb-4">
+                About Us
+              </h1>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                We believe in building with{" "}
+                <span className="inline-block w-20">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentWord}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-primary font-medium"
+                    >
+                      {words[currentWord]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                The name "Bodhi" means awakening. Combined with "X" for transformation,{" "}
+                <span className="text-foreground font-medium">B<span className="text-primary">o</span>dhiX</span> represents 
+                the clarity we bring to complex problems.
+              </p>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl"
-          >
-            <h1 className="text-3xl md:text-4xl font-light text-foreground mb-4">
-              About Us
-            </h1>
-            <p className="text-muted-foreground leading-relaxed mb-2">
-              We believe in building with{" "}
-              <span className="inline-block w-20">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentWord}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-primary font-medium"
-                  >
-                    {words[currentWord]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              The name "Bodhi" means awakening. Combined with "X" for transformation,{" "}
-              <span className="text-foreground font-medium">B<span className="text-primary">o</span>dhiX</span> represents 
-              the clarity we bring to complex problems.
-            </p>
-          </motion.div>
+            {/* Buddha with Vortex */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative flex items-center justify-center"
+            >
+              <Suspense fallback={null}>
+                <div className="w-48 h-48 lg:w-56 lg:h-56">
+                  <ParticleVortex />
+                </div>
+              </Suspense>
+              <motion.img
+                src={laughingBuddha}
+                alt="Laughing Buddha"
+                className="w-32 h-32 lg:w-40 lg:h-40 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-lg"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
 
