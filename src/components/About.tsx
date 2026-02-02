@@ -17,152 +17,115 @@ const About = () => {
 
   return (
     <section id="about" className="bg-background relative">
-      {/* Hero Section with Buddha */}
-      <div className="min-h-[80vh] flex flex-col items-center justify-center px-6 border-b border-border relative overflow-hidden">
-        {/* Buddha with Particle Vortex */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <Suspense fallback={null}>
-            <ParticleVortex />
-          </Suspense>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative z-10"
-          >
+      {/* Compact Hero with Buddha */}
+      <div className="py-16 lg:py-20 px-6 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Buddha positioned to the right */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none hidden lg:block">
+            <Suspense fallback={null}>
+              <div className="w-64 h-64">
+                <ParticleVortex />
+              </div>
+            </Suspense>
             <motion.img
               src={laughingBuddha}
-              alt="Laughing Buddha - Symbol of Awakening"
-              className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain opacity-15"
-              animate={{ 
-                y: [0, -10, 0],
-              }}
-              transition={{ 
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              alt="Laughing Buddha"
+              className="w-48 h-48 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            {/* Pulsing glow effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full bg-primary/10 blur-3xl -z-10"
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3]
-              }}
-              transition={{ 
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl relative z-20"
-        >
-          <p className="text-primary text-xs font-medium tracking-[0.3em] uppercase mb-8">
-            About Us
-          </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground leading-[1.1] mb-4">
-            We believe in building with
-          </h1>
-          <div className="h-14 md:h-16 lg:h-20 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={currentWord}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -50, opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-primary"
-              >
-                {words[currentWord]}
-              </motion.p>
-            </AnimatePresence>
           </div>
-        </motion.div>
-      </div>
 
-      {/* Simple Content Section */}
-      <div className="max-w-5xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl"
           >
-            <span className="text-primary text-sm font-medium">01</span>
-            <h2 className="text-2xl md:text-3xl font-light text-foreground mt-2 mb-6">
-              Our philosophy
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              We don't build software for the sake of it. Every line of code serves a purpose. 
-              Every feature solves a real problem.
+            <h1 className="text-3xl md:text-4xl font-light text-foreground mb-4">
+              About Us
+            </h1>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              We believe in building with{" "}
+              <span className="inline-block w-20">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-primary font-medium"
+                  >
+                    {words[currentWord]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              The name "Bodhi" means awakening. Combined with "X" for transformation, 
-              <span className="text-foreground font-medium"> B<span className="text-primary">o</span>dhiX</span> represents 
+              The name "Bodhi" means awakening. Combined with "X" for transformation,{" "}
+              <span className="text-foreground font-medium">B<span className="text-primary">o</span>dhiX</span> represents 
               the clarity we bring to complex problems.
             </p>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Cards Grid */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-16 lg:pb-20">
+        <div className="grid md:grid-cols-2 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="border border-border rounded-lg p-8"
+          >
+            <p className="text-sm text-muted-foreground mb-4">Our Philosophy</p>
+            <p className="text-5xl md:text-6xl font-light text-primary mb-4">01</p>
+            <p className="text-muted-foreground leading-relaxed">
+              We don't build software for the sake of it. Every line of code serves a purpose. 
+              Every feature solves a real problem.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="border border-border rounded-lg p-8"
           >
-            <span className="text-primary text-sm font-medium">02</span>
-            <h2 className="text-2xl md:text-3xl font-light text-foreground mt-2 mb-6">
-              How we work
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              We start by understanding your business. Not just the technical requirements, 
-              but the actual problems you're trying to solve.
-            </p>
+            <p className="text-sm text-muted-foreground mb-4">How We Work</p>
+            <p className="text-5xl md:text-6xl font-light text-primary mb-4">02</p>
             <p className="text-muted-foreground leading-relaxed">
-              Then we build the simplest solution that works. No bloat. No unnecessary complexity. 
-              Just software that does exactly what you need.
+              We start by understanding your business. Not just technical requirements, 
+              but the actual problems you're trying to solve.
             </p>
           </motion.div>
         </div>
 
-        {/* Values */}
+        {/* Values - inline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-24 lg:mt-32"
+          transition={{ duration: 0.5 }}
+          className="mt-4 grid grid-cols-3 gap-4"
         >
-          <h2 className="text-2xl md:text-3xl font-light text-foreground mb-12">
-            What we stand for
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: "Simplicity", desc: "Strip away the unnecessary. Keep what matters." },
-              { title: "Honesty", desc: "We tell you what you need, not what you want to hear." },
-              { title: "Results", desc: "Software that works. On time. On budget." },
-            ].map((value, i) => (
-              <motion.div 
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 border border-border rounded-lg hover:border-primary/30 transition-colors"
-              >
-                <h3 className="text-lg font-medium text-foreground mb-3">{value.title}</h3>
-                <p className="text-muted-foreground">{value.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+          {[
+            { title: "Simplicity", desc: "Strip away the unnecessary." },
+            { title: "Honesty", desc: "We tell you what you need." },
+            { title: "Results", desc: "Software that works." },
+          ].map((value) => (
+            <div 
+              key={value.title}
+              className="border border-border rounded-lg p-6 hover:border-primary/30 transition-colors"
+            >
+              <h3 className="text-foreground font-medium mb-1">{value.title}</h3>
+              <p className="text-muted-foreground text-sm">{value.desc}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
