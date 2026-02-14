@@ -7,6 +7,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 
+
 const Index = () => {
   return (
     <PageTransition>

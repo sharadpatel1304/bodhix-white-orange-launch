@@ -2,20 +2,14 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import logo from "../assets/laughing-buddha.png";
 
 const Hero = () => {
   const scrollToContent = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
-  // Rotating phrases for movie credit effect
-  const phrases = [
-    "simplicity",
-    "clarity", 
-    "focus",
-    "impact"
-  ];
-
+  const phrases = ["simplicity", "clarity", "focus", "impact"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -25,15 +19,11 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Word animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
     }
   };
 
@@ -42,18 +32,41 @@ const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut" as const
-      }
+      transition: { duration: 0.5, ease: "easeOut" as const }
     }
   };
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-background relative overflow-hidden px-6">
-      {/* Main Content - Centered */}
-      <div className="max-w-4xl mx-auto text-center">
-        {/* Logo */}
+
+      {/* === GLASS BUDDHA BACKGROUND === */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.45 }}
+        animate={{ opacity: 1, scale: 0.6 }}
+        transition={{ duration: 2.2, ease: "easeOut" }}
+        className="absolute inset-0 flex items-center justify-center z-0"
+      >
+        {/* Frosted glass layer */}
+        <div className="absolute w-[120%] h-[120%] backdrop-blur-[60px] backdrop-saturate-150 bg-white/5 dark:bg-black/10" />
+
+        {/* Buddha */}
+        <img
+          src={logo}
+          alt=""
+          className="w-[120%] md:w-[80%] max-w-none opacity-[0.18] blur-[0.3px] mix-blend-soft-light"
+          style={{
+            transform: "rotate(-5deg)",
+            filter: "drop-shadow(0 0 60px rgba(255,255,255,0.15))"
+          }}
+        />
+
+        {/* Glass highlights */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
+      </motion.div>
+
+      {/* === CONTENT === */}
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,7 +78,6 @@ const Hero = () => {
           </h2>
         </motion.div>
 
-        {/* Main Headline */}
         <motion.h1
           variants={containerVariants}
           initial="hidden"
@@ -83,7 +95,6 @@ const Hero = () => {
           <motion.span variants={wordVariants} className="inline-block">business</motion.span>
         </motion.h1>
 
-        {/* Scrolling phrase - movie credit style */}
         <div className="h-16 md:h-20 lg:h-24 overflow-hidden relative">
           <AnimatePresence mode="wait">
             <motion.p
@@ -99,15 +110,14 @@ const Hero = () => {
           </AnimatePresence>
         </div>
 
-        {/* CTA Link */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.5 }}
           className="mt-16"
         >
-          <Link 
-            to="/projects" 
+          <Link
+            to="/projects"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
           >
             see our work
@@ -116,12 +126,12 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
+      {/* === SCROLL INDICATOR === */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer z-20"
         onClick={scrollToContent}
       >
         <motion.div
@@ -132,6 +142,7 @@ const Hero = () => {
           <div className="w-px h-12 bg-gradient-to-b from-transparent via-muted-foreground/50 to-muted-foreground" />
         </motion.div>
       </motion.div>
+
     </section>
   );
 };
