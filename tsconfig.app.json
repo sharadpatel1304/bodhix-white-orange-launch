@@ -21,10 +21,14 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": false,
 
+    /* Path Aliases */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    /* Required Types for 3D and Vite Env */
+    "types": ["vite/client", "node"]
   },
   "include": ["src"]
 }
