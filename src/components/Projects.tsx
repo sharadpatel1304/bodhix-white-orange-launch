@@ -4,6 +4,13 @@ import { ArrowUpRight, Globe } from "lucide-react";
 const Projects = () => {
   const projects = [
     { 
+      title: "Sharpix Lens", 
+      category: "Creative Portfolio", 
+      year: "2024", 
+      link: "https://sharpixlens.us",
+      description: "A visually-driven platform designed for high-impact imagery and creative storytelling."
+    },
+    { 
       title: "Kupaaniru", 
       category: "E-commerce & Brand", 
       year: "2024", 
@@ -69,9 +76,7 @@ const Projects = () => {
                 <div className="space-y-1">
                   <h3 className="text-2xl md:text-4xl font-light text-foreground group-hover:text-primary transition-colors flex items-center gap-3">
                     {project.title}
-                    {project.link !== "#" && (
-                      <Globe size={18} className="opacity-0 group-hover:opacity-100 text-muted-foreground transition-all" />
-                    )}
+                    <Globe size={18} className="opacity-0 group-hover:opacity-100 text-muted-foreground transition-all" />
                   </h3>
                   {project.description && (
                     <p className="text-sm text-muted-foreground max-w-md line-clamp-1 group-hover:line-clamp-none transition-all">
@@ -104,7 +109,7 @@ const Projects = () => {
             href="/contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium hover:bg-primary transition-colors"
+            className="px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium hover:bg-primary transition-colors no-underline"
           >
             Start your project
           </motion.a>
