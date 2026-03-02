@@ -2,15 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import logo from "../assets/laughing-buddha.png";
+import logo from "@/assets/laughing-buddha.png";
 
 const Hero = () => {
-  const scrollToContent = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  };
-
-  const phrases = ["simplicity", "clarity", "focus", "impact"];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const phrases = ["simplicity", "clarity", "focus", "impact"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,130 +15,127 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
-    }
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" as const }
-    }
-  };
-
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-background relative overflow-hidden px-6">
+    <section className="min-h-screen flex items-center bg-[#fcfcfc] relative overflow-hidden px-6 lg:px-20 pt-20">
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-5%] right-[-5%] w-[45%] h-[65%] bg-primary/5 rounded-full blur-[140px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[35%] h-[55%] bg-blue-400/5 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
 
-      {/* === GLASS BUDDHA BACKGROUND === */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.45 }}
-        animate={{ opacity: 1, scale: 0.6 }}
-        transition={{ duration: 2.2, ease: "easeOut" }}
-        className="absolute inset-0 flex items-center justify-center z-0"
-      >
-        {/* Frosted glass layer */}
-        <div className="absolute w-[120%] h-[120%] backdrop-blur-[60px] backdrop-saturate-150 bg-white/5 dark:bg-black/10" />
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        
+        {/* LEFT COLUMN */}
+        <div className="space-y-10">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <span className="h-[1px] w-10 bg-primary/30" />
+              <span className="text-primary text-[10px] font-mono uppercase tracking-[0.5em] block">
+                Digital Atelier
+              </span>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-extralight text-navy tracking-tighter leading-[0.85] mb-8">
+              We build <br />
+              <span className="italic font-serif text-primary/80">purpose</span> <br />
+              into code.
+            </h1>
+          </motion.div>
 
-        {/* Buddha */}
-        <img
-          src={logo}
-          alt=""
-          className="w-[120%] md:w-[80%] max-w-none opacity-[0.18] blur-[0.3px] mix-blend-soft-light"
-          style={{
-            transform: "rotate(-5deg)",
-            filter: "drop-shadow(0 0 60px rgba(255,255,255,0.15))"
-          }}
-        />
+          <div className="h-10 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={currentIndex}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6 }}
+                className="text-xl md:text-2xl text-muted-foreground/60 font-light tracking-tight"
+              >
+                Driven by {phrases[currentIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
-        {/* Glass highlights */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
-      </motion.div>
-
-      {/* === CONTENT === */}
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-16"
-        >
-          <h2 className="text-lg md:text-xl font-normal tracking-wide text-navy">
-            B<span className="text-primary">o</span>dhiX
-          </h2>
-        </motion.div>
-
-        <motion.h1
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-foreground leading-[1.2] mb-4"
-        >
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">We</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">make</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">custom</motion.span>
-          <motion.span variants={wordVariants} className="inline-block">software</motion.span>
-          <br />
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">built</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">around</motion.span>
-          <motion.span variants={wordVariants} className="inline-block mr-[0.25em]">your</motion.span>
-          <motion.span variants={wordVariants} className="inline-block">business</motion.span>
-        </motion.h1>
-
-        <div className="h-16 md:h-20 lg:h-24 overflow-hidden relative">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={currentIndex}
-              initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -60, opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-primary"
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-wrap items-center gap-6 pt-4"
+          >
+            <Link 
+              to="/projects" 
+              className="bg-navy text-white px-10 py-5 rounded-full text-sm font-medium hover:bg-primary transition-all duration-500 shadow-xl shadow-navy/5"
             >
-              {phrases[currentIndex]}
-            </motion.p>
-          </AnimatePresence>
+              Selected Works
+            </Link>
+
+            <Link 
+              to="/contact" 
+              className="text-muted-foreground hover:text-navy text-sm font-medium transition-colors flex items-center gap-2 group"
+            >
+              Start a project 
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-          className="mt-16"
+        {/* RIGHT COLUMN */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, x: 20 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+          className="relative flex items-center justify-center lg:justify-end"
         >
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
-          >
-            see our work
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          {/* Glass Panel */}
+          <div className="relative w-72 md:w-80 h-[480px] rounded-[48px] border border-white/80 backdrop-blur-3xl bg-white/40 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.06)] overflow-hidden">
+
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-white/70 opacity-90 pointer-events-none" />
+
+            {/* PERFECTLY CENTERED BUDDHA */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.img
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 0.7, scale: 1 }}
+                transition={{ duration: 1.2, delay: 0.6 }}
+                src={logo}
+                alt="BodhiX Buddha"
+                className="w-[75%] h-auto object-contain pointer-events-none"
+              />
+            </div>
+
+            {/* Bottom Text */}
+            <div className="absolute bottom-12 left-10 right-10">
+              <div className="w-12 h-[1px] bg-primary/40 mb-6" />
+              <p className="text-[10px] text-muted-foreground/30 uppercase tracking-[0.5em] mb-2 font-mono">
+                Archive
+              </p>
+              <p className="text-navy text-xl font-light tracking-[0.15em] uppercase">
+                BodhiX
+              </p>
+            </div>
+          </div>
+
+          <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-[80px]" />
+          <div className="absolute -bottom-16 -left-10 w-40 h-40 bg-blue-500/5 rounded-full blur-[70px]" />
         </motion.div>
       </div>
 
-      {/* === SCROLL INDICATOR === */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer z-20"
-        onClick={scrollToContent}
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-transparent via-muted-foreground/50 to-muted-foreground" />
-        </motion.div>
-      </motion.div>
-
+      {/* Footer Mark */}
+      <div className="absolute bottom-12 left-6 lg:left-20 flex items-center gap-10">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-[1px] bg-border/60" />
+          <span className="text-[10px] text-muted-foreground/30 uppercase tracking-[0.6em]">
+            MMXXVI
+          </span>
+        </div>
+      </div>
     </section>
   );
 };
