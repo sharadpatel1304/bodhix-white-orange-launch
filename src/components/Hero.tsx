@@ -15,33 +15,28 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center bg-background relative overflow-hidden px-6 lg:px-20">
+    <section className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden px-6 lg:px-20">
       
-      {/* Subtle background elements */}
+      {/* Minimal ambient glow */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-primary/[0.02] rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/[0.02] rounded-full blur-[130px]" />
       </div>
 
-      {/* Large background number */}
-      <div className="absolute top-1/2 right-10 lg:right-20 -translate-y-1/2 pointer-events-none select-none">
-        <span className="text-[25vw] font-extralight text-foreground/[0.02] leading-none tracking-tighter">
-          BX
-        </span>
-      </div>
-
-      <div className="relative z-10 max-w-5xl">
+      <div className="relative z-10 text-center max-w-4xl mx-auto">
         
         {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-10"
+          className="flex items-center justify-center gap-3 mb-8"
         >
-          <span className="h-[1px] w-10 bg-primary/40" />
+          <span className="h-[1px] w-8 bg-primary/30" />
           <span className="text-primary text-[10px] font-mono uppercase tracking-[0.5em]">
             Software Studio
           </span>
+          <span className="h-[1px] w-8 bg-primary/30" />
         </motion.div>
 
         {/* Main headline */}
@@ -49,9 +44,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extralight text-navy tracking-tighter leading-[1.05] mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-extralight text-navy tracking-tight leading-[1.1] mb-6"
         >
-          We craft software <br />
+          We craft software
+          <br />
           that drives{" "}
           <span className="italic font-serif text-primary">results</span>.
         </motion.h1>
@@ -61,14 +57,14 @@ const Hero = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-lg md:text-xl text-muted-foreground/70 font-light max-w-xl mb-4 leading-relaxed"
+          className="text-base md:text-lg text-muted-foreground/60 font-light max-w-lg mx-auto mb-6 leading-relaxed"
         >
           Custom solutions built around your business — reliable, 
           scalable, and designed to perform from day one.
         </motion.p>
 
         {/* Rotating phrase */}
-        <div className="h-8 overflow-hidden mb-10">
+        <div className="h-7 overflow-hidden mb-10">
           <AnimatePresence mode="wait">
             <motion.p
               key={currentIndex}
@@ -76,7 +72,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.5 }}
-              className="text-sm text-muted-foreground/40 font-mono uppercase tracking-[0.3em]"
+              className="text-xs text-muted-foreground/35 font-mono uppercase tracking-[0.3em]"
             >
               Built on {phrases[currentIndex]}
             </motion.p>
@@ -88,7 +84,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="flex flex-wrap items-center gap-6"
+          className="flex flex-wrap items-center justify-center gap-6"
         >
           <Link 
             to="/projects" 
@@ -105,33 +101,6 @@ const Hero = () => {
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
-
-        {/* Trust indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="mt-16 pt-10 border-t border-border/40 flex flex-wrap gap-10 md:gap-16"
-        >
-          {[
-            { num: "50+", label: "Projects Delivered" },
-            { num: "98%", label: "Client Retention" },
-            { num: "5+", label: "Years of Experience" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-3xl md:text-4xl font-extralight text-navy tracking-tight">{stat.num}</p>
-              <p className="text-[11px] text-muted-foreground/50 uppercase tracking-[0.2em] mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Bottom mark */}
-      <div className="absolute bottom-10 left-6 lg:left-20 flex items-center gap-4">
-        <div className="w-10 h-[1px] bg-border/50" />
-        <span className="text-[10px] text-muted-foreground/25 uppercase tracking-[0.5em]">
-          MMXXVI
-        </span>
       </div>
     </section>
   );
