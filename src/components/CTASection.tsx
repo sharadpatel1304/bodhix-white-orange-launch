@@ -23,7 +23,7 @@ const CTASection = () => {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.3]);
 
   return (
-    <section ref={ref} className="py-32 lg:py-48 bg-background relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-20 bg-background relative overflow-hidden">
       {/* Grid Pattern with parallax */}
       <motion.div 
         style={{ y: backgroundY }}

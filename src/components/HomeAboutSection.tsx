@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomeAboutSection = () => {
   return (
-    <section className="py-16 lg:py-20 bg-background">
+    <section className="py-12 lg:py-16 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Top intro */}
         <motion.div
