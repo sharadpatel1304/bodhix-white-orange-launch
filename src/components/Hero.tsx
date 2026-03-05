@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import logo from "@/assets/laughing-buddha.png";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,125 +15,123 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center bg-[#fcfcfc] relative overflow-hidden px-6 lg:px-20 pt-20">
+    <section className="min-h-screen flex flex-col justify-center bg-background relative overflow-hidden px-6 lg:px-20">
       
-      {/* Background Ambience */}
+      {/* Subtle background elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-5%] right-[-5%] w-[45%] h-[65%] bg-primary/5 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[35%] h-[55%] bg-blue-400/5 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      {/* Large background number */}
+      <div className="absolute top-1/2 right-10 lg:right-20 -translate-y-1/2 pointer-events-none select-none">
+        <span className="text-[25vw] font-extralight text-foreground/[0.02] leading-none tracking-tighter">
+          BX
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-5xl">
         
-        {/* LEFT COLUMN */}
-        <div className="space-y-10">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <span className="h-[1px] w-10 bg-primary/30" />
-              <span className="text-primary text-[10px] font-mono uppercase tracking-[0.5em] block">
-                Digital Atelier
-              </span>
-            </div>
-            
-            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-extralight text-navy tracking-tighter leading-[0.85] mb-8">
-              We build <br />
-              <span className="italic font-serif text-primary/80">purpose</span> <br />
-              into code.
-            </h1>
-          </motion.div>
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-10"
+        >
+          <span className="h-[1px] w-10 bg-primary/40" />
+          <span className="text-primary text-[10px] font-mono uppercase tracking-[0.5em]">
+            Software Studio
+          </span>
+        </motion.div>
 
-          <div className="h-10 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={currentIndex}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.6 }}
-                className="text-xl md:text-2xl text-muted-foreground/60 font-light tracking-tight"
-              >
-                Driven by {phrases[currentIndex]}
-              </motion.p>
-            </AnimatePresence>
-          </div>
+        {/* Main headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-extralight text-navy tracking-tighter leading-[1.05] mb-6"
+        >
+          We craft software <br />
+          that drives{" "}
+          <span className="italic font-serif text-primary">results</span>.
+        </motion.h1>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap items-center gap-6 pt-4"
-          >
-            <Link 
-              to="/projects" 
-              className="bg-navy text-white px-10 py-5 rounded-full text-sm font-medium hover:bg-primary transition-all duration-500 shadow-xl shadow-navy/5"
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-lg md:text-xl text-muted-foreground/70 font-light max-w-xl mb-4 leading-relaxed"
+        >
+          Custom solutions built around your business — reliable, 
+          scalable, and designed to perform from day one.
+        </motion.p>
+
+        {/* Rotating phrase */}
+        <div className="h-8 overflow-hidden mb-10">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={currentIndex}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.5 }}
+              className="text-sm text-muted-foreground/40 font-mono uppercase tracking-[0.3em]"
             >
-              Selected Works
-            </Link>
-
-            <Link 
-              to="/contact" 
-              className="text-muted-foreground hover:text-navy text-sm font-medium transition-colors flex items-center gap-2 group"
-            >
-              Start a project 
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+              Built on {phrases[currentIndex]}
+            </motion.p>
+          </AnimatePresence>
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* CTAs */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95, x: 20 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-          className="relative flex items-center justify-center lg:justify-end"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          className="flex flex-wrap items-center gap-6"
         >
-          {/* Glass Panel */}
-          <div className="relative w-72 md:w-80 h-[480px] rounded-[48px] border border-white/80 backdrop-blur-3xl bg-white/40 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.06)] overflow-hidden">
+          <Link 
+            to="/projects" 
+            className="bg-navy text-white px-10 py-4 rounded-full text-sm font-medium hover:bg-primary transition-all duration-500 shadow-lg shadow-navy/10"
+          >
+            View Our Work
+          </Link>
 
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-white/70 opacity-90 pointer-events-none" />
+          <Link 
+            to="/contact" 
+            className="text-muted-foreground hover:text-navy text-sm font-medium transition-colors flex items-center gap-2 group"
+          >
+            Start a project 
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
 
-            {/* PERFECTLY CENTERED BUDDHA */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.img
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 0.7, scale: 1 }}
-                transition={{ duration: 1.2, delay: 0.6 }}
-                src={logo}
-                alt="BodhiX Buddha"
-                className="w-[75%] h-auto object-contain pointer-events-none"
-              />
+        {/* Trust indicators */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          className="mt-16 pt-10 border-t border-border/40 flex flex-wrap gap-10 md:gap-16"
+        >
+          {[
+            { num: "50+", label: "Projects Delivered" },
+            { num: "98%", label: "Client Retention" },
+            { num: "5+", label: "Years of Experience" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="text-3xl md:text-4xl font-extralight text-navy tracking-tight">{stat.num}</p>
+              <p className="text-[11px] text-muted-foreground/50 uppercase tracking-[0.2em] mt-1">{stat.label}</p>
             </div>
-
-            {/* Bottom Text */}
-            <div className="absolute bottom-12 left-10 right-10">
-              <div className="w-12 h-[1px] bg-primary/40 mb-6" />
-              <p className="text-[10px] text-muted-foreground/30 uppercase tracking-[0.5em] mb-2 font-mono">
-                Archive
-              </p>
-              <p className="text-navy text-xl font-light tracking-[0.15em] uppercase">
-                BodhiX
-              </p>
-            </div>
-          </div>
-
-          <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-[80px]" />
-          <div className="absolute -bottom-16 -left-10 w-40 h-40 bg-blue-500/5 rounded-full blur-[70px]" />
+          ))}
         </motion.div>
       </div>
 
-      {/* Footer Mark */}
-      <div className="absolute bottom-12 left-6 lg:left-20 flex items-center gap-10">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-[1px] bg-border/60" />
-          <span className="text-[10px] text-muted-foreground/30 uppercase tracking-[0.6em]">
-            MMXXVI
-          </span>
-        </div>
+      {/* Bottom mark */}
+      <div className="absolute bottom-10 left-6 lg:left-20 flex items-center gap-4">
+        <div className="w-10 h-[1px] bg-border/50" />
+        <span className="text-[10px] text-muted-foreground/25 uppercase tracking-[0.5em]">
+          MMXXVI
+        </span>
       </div>
     </section>
   );
